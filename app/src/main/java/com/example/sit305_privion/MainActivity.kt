@@ -69,7 +69,7 @@ fun SIT305PrivionApp() {
             when (currentDestination) {
                 AppDestinations.HOME -> HomeScreen(modifier = Modifier.padding(innerPadding))
                 AppDestinations.INSIGHT -> AiInsightScreen(modifier = Modifier.padding(innerPadding))
-                AppDestinations.PROFILE -> PlaceholderScreen("Profile", Modifier.padding(innerPadding))
+                AppDestinations.SUMMARY -> ClinicianSummaryScreen(modifier = Modifier.padding(innerPadding))
             }
         }
     }
@@ -81,7 +81,7 @@ enum class AppDestinations(
 ) {
     HOME("Home", R.drawable.ic_home),
     INSIGHT("Insight", R.drawable.ic_favorite),
-    PROFILE("Profile", R.drawable.ic_account_box),
+    SUMMARY("Summary", R.drawable.ic_account_box),
 }
 
 @Composable
@@ -289,6 +289,91 @@ fun AiInsightScreen(modifier: Modifier = Modifier) {
                 Text(
                     text = "Reduce load and monitor next session",
                     style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ClinicianSummaryScreen(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Top
+    ) {
+        Text(
+            text = "Clinician Summary",
+            style = MaterialTheme.typography.headlineMedium
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = "Structured weekly recovery report",
+            style = MaterialTheme.typography.bodyLarge
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Text(
+            text = "Weekly Overview",
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    text = "• Pain increased in 4 sessions",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "• Pattern linked to specific movement",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Text(
+            text = "Report Summary",
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    text = "Weekly Recovery Report",
+                    style = MaterialTheme.typography.titleSmall
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = "Pain levels increased across 4 recorded sessions this week. " +
+                            "The discomfort pattern appears to be associated with a repeated lower body movement. " +
+                            "This may indicate sensitivity to load, instability, or incomplete recovery in that movement pattern.",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = "Suggested clinical focus: review exercise technique, monitor pain progression, and assess whether training intensity should be adjusted.",
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }
